@@ -1,0 +1,23 @@
+<mat-expansion-panel hideToggle [expanded]="expanded">
+  <mat-expansion-panel-header>
+    <mat-panel-title (click)="$event.stopPropagation()">
+      <div class="w-100 d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+          <mat-checkbox class="mr-2" (change)="ckbTaskOnChange($event)" [checked]="checked" ></mat-checkbox>
+          <span>{{task?.title || ''}}</span>
+          <mat-chip-list class="task__done ml-2">
+            <mat-chip *ngIf="task?.done" color="primary" selected>Done</mat-chip>
+          </mat-chip-list>
+        </div>
+  
+        <div>
+          <button mat-flat-button color="primary" class="mr-2" (click)="btnDetailOnClick()">Detail</button>
+          <button mat-flat-button color="warn" (click)="btnRemoveOnClick(task.id)">Remove</button>
+        </div>
+      </div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <app-task-form [task]="task" [mode]="StateMode.Edit" (submitTask)="taskFormOnSubmit($event)">
+    <button mat-flat-button color="primary" class="w-100">Update</button>
+  </app-task-form>
+</mat-expansion-panel>

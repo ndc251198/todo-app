@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+.task__done ::ng-deep {
+  .mat-standard-chip {
+    padding: 0px 12px;
+    min-height: 24px;
+  }
+}

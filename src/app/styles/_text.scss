@@ -1,0 +1,23 @@
+// Alignment
+$align: justify, center, left, right;
+@each $value in $align {
+  .text-#{$value}  { text-align: $value }
+}
+
+// Transformation
+
+.text-lowercase  { text-transform: lowercase  }
+.text-uppercase  { text-transform: uppercase  }
+.text-capitalize { text-transform: capitalize  }
+
+// Weight and italics
+
+.font-weight-bold    { font-weight: bold  }
+.font-italic         { font-style: italic  }
+
+.text-decoration-none { text-decoration: none  }
+
+
+// Reset
+
+.text-reset { color: inherit  }

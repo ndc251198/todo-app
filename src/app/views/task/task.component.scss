@@ -1,0 +1,11 @@
+@import '../../styles/variable';
+
+:host {
+  display: block;
+}
+
+.task__action--mobile {
+  position: fixed;
+  bottom: 80px;
+  right: map-get($spacers, 4);
+}

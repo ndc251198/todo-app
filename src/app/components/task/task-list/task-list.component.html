@@ -1,0 +1,41 @@
+<div class="task-list h-100 d-flex flex-column">
+  <!-- phần title -->
+  <div class="task-list__title text-center p-4 mb-2">
+    <h3 class="font-weight-bold">To Do List</h3>
+  </div>
+  <!-- end phần title -->
+
+  <!-- phần danh sách -->
+  <div class="task-list__body p-4 flex-1 overflow-y-auto">
+    <div class="task-list__body__search mb-2">
+      <mat-form-field class="w-100">
+        <input #search matInput placeholder="Search" (input)="txtSearchOnInput(search.value)" />
+      </mat-form-field>
+    </div>
+
+    <div class="task-list__body__list">
+      <mat-accordion>
+        <app-task-item
+          *ngFor="let task of displayTasks; trackBy: trackByFn"
+          [task]="task"
+          [checked]="selected.hasValue() && selected.isSelected(task)"
+          class="mb-2"
+          (checkbox)="taskItemCheckBoxOnChange($event, task)"
+        ></app-task-item>
+      </mat-accordion>
+    </div>
+  </div>
+  <!-- end phần danh sách -->
+
+  <!-- phần action -->
+  <div class="task-list__action mat-elevation-z4" *ngIf="selected.hasValue()">
+    <div class="d-flex justify-content-between align-items-center p-4">
+      <div>Bulk Action: {{selected.selected.length}}</div>
+      <div>
+        <button mat-flat-button color="primary" class="mr-2" (click)="bulkDoneOnClick()">Done</button>
+        <button mat-flat-button color="warn" (click)="bulkRemoveOnClick()">Remove</button>
+      </div>
+    </div>
+  </div>
+  <!-- end phần action -->
+</div>

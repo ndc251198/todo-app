@@ -1,0 +1,15 @@
+<div class="task h-100 d-flex">
+  <div class="task__create flex-1 d-none d-lg-block">
+    <app-task-create class="h-100"></app-task-create>
+  </div>
+  <mat-divider [vertical]="true" class="d-none d-lg-block"></mat-divider>
+  <div class="task__list flex-1">
+    <app-task-list class="h-100"></app-task-list>
+  </div>
+
+  <div class="task__action--mobile d-lg-none">
+    <button mat-mini-fab class="">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

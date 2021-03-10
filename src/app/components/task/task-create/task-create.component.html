@@ -1,0 +1,12 @@
+<div class="task-create">
+  <!-- phần title -->
+  <div class="task-list__title text-center p-4 mb-2">
+    <h3 class="font-weight-bold">Task Create</h3>
+  </div>
+  <!-- end phần title -->
+
+  <app-task-form class="p-4" (submitTask)="taskFromOnSubmit($event)">
+    <button mat-flat-button color="primary" class="w-100">Add</button>
+  </app-task-form>
+
+</div>
