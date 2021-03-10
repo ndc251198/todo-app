@@ -1,10 +1,19 @@
+@import '~@angular/material/theming';
+
 :host {
   display: block;
+
+  ::ng-deep {
+    .mat-expansion-panel-header {
+      padding: 10px 24px;
+      height: unset;
+    }
+  }
 }
 
-.task__done ::ng-deep {
-  .mat-standard-chip {
-    padding: 0px 12px;
-    min-height: 24px;
+.task-item--done {
+  .task-item__title {
+    color:map-get($mat-indigo, 500);
+    font-weight: bold;
   }
 }

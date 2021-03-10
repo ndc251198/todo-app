@@ -7,6 +7,7 @@ import { TaskCreateComponent } from 'src/app/components/task/task-create/task-cr
 import { TaskItemComponent } from 'src/app/components/task/task-item/task-item.component';
 import { TaskListComponent } from 'src/app/components/task/task-list/task-list.component';
 import { TaskFormComponent } from 'src/app/components/task/task-form/task-form.component';
+import { TaskDialogComponent } from 'src/app/components/task/task-dialog/task-dialog.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,8 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
     TaskCreateComponent,
     TaskItemComponent,
     TaskFormComponent,
+    TaskDialogComponent
   ],
   imports: [
     CommonModule,
@@ -41,8 +43,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatExpansionModule,
     MatCheckboxModule,
     MatDividerModule,
-    MatChipsModule,
     MatIconModule,
+    MatDialogModule
   ],
 })
 export class TaskModule {}

@@ -1,3 +1,11 @@
+@import '../../../styles/variable';
+
 :host {
   display: block;
+}
+
+@include media-breakpoint-up('lg') {
+  .form__date {
+    margin-right: map-get($spacers, 2);
+  }
 }
