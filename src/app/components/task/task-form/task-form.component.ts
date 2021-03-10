@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroupDirective, ValidatorFn, Validators } from '@angular/forms';
 import { StateMode, TaskPiority } from 'src/app/commons/enumeration';
 import Task from 'src/app/models/task';
 
@@ -7,6 +7,15 @@ interface PiorityOption {
   name: string;
 
   value: TaskPiority;
+}
+
+function notPastToday(): ValidatorFn {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  return (control: AbstractControl): {[key: string]: any} | null => {
+    const past =  new Date(control.value).getTime() < today.getTime();
+    return past ? {past: {value: control.value}} : null;
+  };
 }
 
 @Component({
@@ -48,12 +57,16 @@ export class TaskFormComponent implements OnInit, OnChanges {
   public taskForm = this.fb.group({
     title: ['', Validators.required],
     description: [''],
-    dueDate: [new Date()],
+    dueDate: [new Date(), notPastToday()],
     piority: [TaskPiority.Normal]
   });
 
   get titleControl(){
     return this.taskForm.get('title');
+  }
+
+  get dueDateControl() {
+    return this.taskForm.get('dueDate');
   }
   
   constructor(private fb: FormBuilder) { }

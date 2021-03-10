@@ -17,15 +17,18 @@
     </div>
   
     <div class="d-lg-flex align-items-center justify-betwwen">
-      <div class="form__date flex-1">
+      <div class="form__date flex-1 mb-2">
         <mat-form-field class="w-100">
           <mat-label>Due Date</mat-label>
           <input formControlName="dueDate" matInput [matDatepicker]="picker" />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="dueDateControl?.hasError('past')">
+            Not accept days in the past
+          </mat-error>
         </mat-form-field>
       </div>
-      <div class="form__piority flex-1">
+      <div class="form__piority flex-1 mb-2">
         <mat-form-field class="w-100">
           <mat-label>Piority</mat-label>
           <mat-select formControlName="piority">
